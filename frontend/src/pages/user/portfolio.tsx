@@ -1,7 +1,6 @@
 import "../../assets/css/main.css";
 import "../../assets/css/scrollbar.css";
 import Paul from "../../assets/image/paul.jpg";
-import { TfiArrowCircleLeft } from "react-icons/tfi";
 import { FaArrowDown, FaDev, FaDiscord, FaFacebookSquare, FaGithub, FaHtml5, FaJava, FaLightbulb, FaLinkedin, FaPaintBrush, FaReact, FaTimes} from "react-icons/fa";
 import { IoGitBranch } from "react-icons/io5";
 import { SiPhp } from "react-icons/si";
@@ -15,7 +14,7 @@ import { useTestimonialSlider } from "../../hooks/useTestimonialSlider";
 // import useContactForm from "../../hooks/useContactForm";
 import Nav from "./components/nav";
 import { FcOpenedFolder } from "react-icons/fc";
-import { Loader2 } from "lucide-react";
+// import { Loader2 } from "lucide-react";
 // import InputError from "@/components/input-error";
 // import { Link } from "@inertiajs/react";
 import { useProjectModal, useTestimonyModal, useUserModal } from "../../hooks/useGenericModal";
