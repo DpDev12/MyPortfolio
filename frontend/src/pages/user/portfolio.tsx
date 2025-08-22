@@ -592,7 +592,9 @@ export default function Portfolio() {
                 </div>
 
                 {/* Right Column - Contact Form */}
-                <div className="p-6 md:p-10 lg:p-20 flex flex-col justify-center order-1 lg:order-2">
+                <div 
+                    onClick={openViewProjectModal}
+                    className="p-6 md:p-10 lg:p-20 flex flex-col justify-center order-1 lg:order-2">
                     <div ref={conGRef} style={conGFadeIn.style} className="bg-white rounded-3xl p-6 md:p-10">
                         <h1 className="text-slate-700 text-2xl md:text-3xl font-bold pb-5 text-center">Contact Me</h1>
 
@@ -638,7 +640,6 @@ export default function Portfolio() {
                             </div>
                             <div className="mt-5">
                                 <button
-                                    type="submit"
                                     className="flex items-center justify-center w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition text-sm md:text-base"
                                 >
                                     Send Message
