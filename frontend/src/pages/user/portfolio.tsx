@@ -12,7 +12,7 @@ import { CgMail } from "react-icons/cg";
 import Nav from "./components/nav";
 import { FcOpenedFolder } from "react-icons/fc";
 import { ViewModalCV } from "../../components/Modal/ViewModalCV";
-import { useUserModal } from "../../hooks/useGenericModal";
+import { useUserModal, useViewProjectModal } from "../../hooks/useGenericModal";
 
 
 //Animation
@@ -21,13 +21,16 @@ import { useTypewriter,
     useInView, 
     useBounceOnce, 
     useBounceIn, 
-    useDrop 
+    useDrop,
+    useBreatheOnce
 } from "../../hooks/useAnimationEffects";
+import { ViewProjectModal } from "@/components/Modal/ViewProjectModal";
 
 
 export default function Portfolio() {
 
     const { isOpen: isViewOpen, item: selectedItem, openViewModal, closeModal: closeViewModal } = useUserModal();
+    const { isOpen: isProjOpen, item: selectedProj, openViewProjectModal, closeModal: closeProjModal } = useViewProjectModal();
 
     // Animation - Initial load animations (one-time)
     const jobTitles = [
@@ -119,6 +122,18 @@ export default function Portfolio() {
         rootMargin: '-50px 0px'
     });
 
+    const [projRef, projInView] = useInView({ 
+        threshold: 0.2, 
+        triggerOnce: false,
+        rootMargin: '-50px 0px'
+    }); 
+    
+    const [testRef, testInView] = useInView({ 
+        threshold: 0.2, 
+        triggerOnce: false,
+        rootMargin: '-50px 0px'
+    });
+    
     const [conGRef, conGInView] = useInView({ 
         threshold: 0.2, 
         triggerOnce: false,
@@ -222,6 +237,9 @@ export default function Portfolio() {
     const congit = useBounceOnce(800, 0, contactSocialInView);
     const condiscord = useBounceOnce(1200, 0, contactSocialInView);
 
+    const proj = useBreatheOnce(500, projInView);
+    const test = useBreatheOnce(500, testInView);
+
     // Expertise button animation
     const titleFade = useFadeIn({
         delay: 200,
@@ -229,6 +247,14 @@ export default function Portfolio() {
         trigger: isInView,
         direction: 'up'
     });
+
+      // Method 1: Direct download from public folder
+    const handleDownloadResume = () => {
+      const link = document.createElement('a');
+      link.href = '/PAUL_ARGIE_PURISIMA-RESUME.pdf'; // Place your PDF in public/resume.pdf
+      link.download = 'Paul_Argie_Purisima-Resume.pdf';
+      link.click();
+    };
 
     return (
       
@@ -285,6 +311,7 @@ export default function Portfolio() {
                         <div ref={homeBtnRef} className="mt-4 flex justify-center lg:justify-start">
                             <button 
                                 style={homeBtnFadeIn.style} 
+                                onClick={handleDownloadResume}
                                 className="group mt-0 bg-white text-blue-800 px-4 py-2 rounded-md flex items-center hover:bg-gray-200 transition cursor-pointer">
                                 Download my CV <span className='mt-1 ml-1 group-hover:animate-bounce'><FaArrowDown /></span>
                             </button>
@@ -329,7 +356,10 @@ export default function Portfolio() {
                    
                     <div ref={myProjectBtnRef} style={myProjectBtnFadeIn.style} className="flex justify-center lg:justify-start">
                        
-                        <button className="text-center px-4 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition">
+                        <button 
+                            onClick={openViewProjectModal}
+                            className="text-center px-4 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition"
+                        >
                             View All Projects
                         </button>
                     </div>
@@ -337,7 +367,7 @@ export default function Portfolio() {
 
                 {/* Right Column - Sliding Project Cards */}
                 <div className="p-6 md:p-10 flex items-center justify-center order-1 lg:order-2">
-                    <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
+                    <div ref={projRef} style={proj.style} className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
                         <FcOpenedFolder size={64} className="mx-auto mb-4" />
                         <h2 className="text-xl md:text-2xl font-bold text-indigo-800 mb-2">No Projects Yet</h2>
                         <p className="text-gray-600">
@@ -476,7 +506,7 @@ export default function Portfolio() {
                  <h1 className="text-center text-2xl md:text-3xl font-bold text-slate-700 mb-6">
                     Client Testimonials
                 </h1>
-                <div className="flex items-center justify-center mt-20">
+                <div ref={testRef} style={test.style} className="flex items-center justify-center mt-20">
                     <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
                         <FaRegMessage size={64} className="mx-auto mb-4 text-yellow-700" />
                         <h2 className="text-xl md:text-2xl font-bold text-indigo-800 mb-2">No Testimonial Yet</h2>
@@ -623,6 +653,11 @@ export default function Portfolio() {
                 item={selectedItem} 
                 isOpen={isViewOpen} 
                 onClose={closeViewModal} 
+            />
+            <ViewProjectModal
+                item={selectedProj} 
+                isOpen={isProjOpen} 
+                onClose={closeProjModal} 
             />
         </div>
 
