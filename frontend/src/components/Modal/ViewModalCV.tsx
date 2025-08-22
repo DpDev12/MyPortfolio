@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 interface ViewModalCVProps<T = any> {
   item: T | null;
   isOpen: boolean;

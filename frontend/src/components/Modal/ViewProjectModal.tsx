@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { BsEmojiGrin } from 'react-icons/bs';
 
 interface ViewProjectModalProps<T = any> {

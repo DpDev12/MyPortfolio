@@ -1,5 +1,4 @@
-// hooks/useModal.ts
-// import { User } from '@/types';
+// hooks/useModal.ts 
 import { useState, useEffect } from 'react';
 
 interface UseModalReturn<T = any> {
@@ -73,7 +72,7 @@ interface UseProjectModalReturn {
 // Specialized hook for projects
 export const useProjectModal = (): UseProjectModalReturn => {
   const modal = useModal<Project>();
-     
+      
   const openProjectModal = (project: Project): void => {
     modal.openModal(project);
   };
@@ -110,7 +109,7 @@ interface UseTestimonyModalReturn {
 // Specialized hook for testimonies
 export const useTestimonyModal = (): UseTestimonyModalReturn => {
   const modal = useModal<Testimony>();
-     
+      
   const openTestimonyModal = (testimony: Testimony): void => {
     modal.openModal(testimony);
   };
@@ -123,22 +122,18 @@ export const useTestimonyModal = (): UseTestimonyModalReturn => {
   };
 };
 
-// Generic view modal hook - for any data type
-{/* export const useViewModal = <T = any>(): UseModalReturn<T> => {
-  return useModal<T>();
-}; */}
-
-interface UseUserModalReturn {
+// Fixed: Added generic type parameter
+interface UseUserModalReturn<T = any> {
   isOpen: boolean;
   item: T | null;
-  openViewModal: (T) => void;
+  openViewModal: (item: T) => void;
   closeModal: () => void;
 }
 
-// Add new modal types easily
-export const useUserModal = (): UseUserModalReturn => {
+// Add new modal types easily - Fixed generic declaration
+export const useUserModal = <T = any>(): UseUserModalReturn<T> => {
   const modal = useModal<T>();
-  
+   
   const openViewModal = (item: T): void => {
     modal.openModal(item);
   };
@@ -151,14 +146,15 @@ export const useUserModal = (): UseUserModalReturn => {
   };
 };
 
-interface useViewProjectModalReturn {
+// Fixed: Added generic type parameter and proper naming
+interface UseViewProjectModalReturn<T = any> {
   isOpen: boolean;
   item: T | null;
-  openViewProjectModal: (T) => void;
+  openViewProjectModal: (item: T) => void;
   closeModal: () => void;
 }
 
-export const useViewProjectModal = (): useViewProjectModalReturn => {
+export const useViewProjectModal = <T = any>(): UseViewProjectModalReturn<T> => {
   const modal = useModal<T>();
 
   const openViewProjectModal = (item: T): void => {
@@ -170,10 +166,5 @@ export const useViewProjectModal = (): useViewProjectModalReturn => {
     item: modal.data,
     openViewProjectModal,
     closeModal: modal.closeModal,
-  }
-}
-
-{/* // Usage examples:
-// const projectModal = useProjectModal();
-// const testimonyModal = useTestimonyModal();
-// const genericModal = useViewModal<SomeDataType>(); */}
+  };
+};
