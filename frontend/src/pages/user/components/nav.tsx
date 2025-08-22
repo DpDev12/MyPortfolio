@@ -60,7 +60,7 @@ export default function Nav() {
           
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-blue-700 p-2 rounded-md hover:bg-gray-100 transition z-50 relative"
+            className="bg-white text-blue-700 p-2 rounded-md hover:bg-gray-100 transition z-50 relative"
           >
             {isMobileMenuOpen ? (
               <HiX className="w-6 h-6" />

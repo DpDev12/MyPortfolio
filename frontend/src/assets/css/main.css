@@ -55,6 +55,11 @@
     border-color: #c7d2fe;
 }
 
+@media (max-width: 1023px) {
+  .clip-left-slope {
+    clip-path: none;
+  }
+}
 
 /* @keyframes bounceLoop {
   0%, 100% {

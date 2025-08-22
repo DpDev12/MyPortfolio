@@ -81,13 +81,13 @@ export default function Portfolio() {
         rootMargin: '-50px 0px'
     });
     const [myProjectBtnRef, myProjectBtnInView] = useInView({ 
-        threshold: 1, 
+        threshold: 0.1, 
         triggerOnce: false,
         rootMargin: '-50px 0px'
     });
     
     const [myExpBtnRef, myExpBtnInView] = useInView({ 
-        threshold: 1, 
+        threshold: 0.1, 
         triggerOnce: false,
         rootMargin: '-50px 0px'
     });
@@ -105,6 +105,12 @@ export default function Portfolio() {
     });
 
     const [skillsRef, skillsInView] = useInView({ 
+        threshold: 0.2, 
+        triggerOnce: false,
+        rootMargin: '-50px 0px'
+    });
+    
+    const [skillsOutRef, skillsOutView] = useInView({ 
         threshold: 0.2, 
         triggerOnce: false,
         rootMargin: '-50px 0px'
@@ -188,6 +194,12 @@ export default function Portfolio() {
         direction: 'left'
     });
 
+    const skillsOutFadeIn = useFadeIn({
+        trigger: skillsOutView,
+        duration: 800,
+        delay: 100,
+        direction: 'left'
+    });
     const skillsFadeIn = useFadeIn({
         trigger: skillsInView,
         duration: 800,
@@ -220,7 +232,7 @@ export default function Portfolio() {
         trigger: conGInView,
         duration: 800,
         delay: 100,
-        direction: 'left'
+        direction: 'right'
     });
 
     // Repeating animations for contact social media
@@ -350,13 +362,13 @@ export default function Portfolio() {
                 {/* Left Column - Project Title & Description */}
                 <div className="bg-indigo-900 text-white p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
                     <h1 ref={myProjectRef} style={myProjectFadeIn.style} className="text-3xl md:text-4xl font-bold text-slate-100 mb-4 text-center lg:text-left">My Projects</h1>
-                    <p ref={projectRef} style={projectFadeIn.style} className="text-slate-100 text-base md:text-lg mb-4 text-center lg:text-left">
+                    <p ref={projectRef} style={projectFadeIn.style} className=" text-slate-100 text-base md:text-lg mb-4 text-center lg:text-left">
                         Here are some of the projects I've built using React, Laravel, and other web technologies. These projects showcase my skills in full-stack development.
                     </p>
                    
-                    <div ref={myProjectBtnRef} style={myProjectBtnFadeIn.style} className="flex justify-center lg:justify-start">
-                       
+                    <div ref={myProjectBtnRef} className="flex justify-center lg:justify-start">
                         <button 
+                            style={myProjectBtnFadeIn.style}
                             onClick={openViewProjectModal}
                             className="text-center px-4 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition"
                         >
@@ -382,7 +394,7 @@ export default function Portfolio() {
                 {/* Left Column - Expertise */}
                 <div className="bg-indigo-900 text-white p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
                     <h1 ref={expertiseRef} style={expertiseFadeIn.style} className="text-3xl md:text-4xl font-bold text-slate-100 mb-4 text-center lg:text-left">My Expertise</h1>
-                    <p ref={skillsRef} style={skillsFadeIn.style} className="text-base md:text-lg text-justify mb-6">
+                    <p ref={skillsOutRef} style={skillsOutFadeIn.style} className="text-base md:text-lg text-justify mb-6">
                         As a dedicated web developer, I specialize in creating modern, responsive applications using React, Laravel, and cutting-edge web technologies.
                     </p>
                     
@@ -409,7 +421,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Right Column - Skills */}
-                <div style={skillsFadeIn.style} className="p-6 md:p-10 order-1 lg:order-2 flex justify-center items-center">
+                <div ref={skillsRef} style={skillsFadeIn.style} className="p-6 md:p-10 order-1 lg:order-2 flex justify-center items-center">
                     <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
                         {/* Sticky Header */}
                         <div className="sticky top-0 bg-amber-50 z-10 rounded-t-3xl">
@@ -530,7 +542,12 @@ export default function Portfolio() {
                     <div  ref={contactSocialRef} style={conGFadeIn.style} className="mb-16 text-center">
                         <p className="text-slate-100">You can also email me directly at:</p>
                         <div className="relative inline-block">
-                            <a href="mailto:paulargiepurisima@gmail.com" className="text-slate-100 underline font-medium hover:bg-slate-50 hover:text-blue-600 break-all">
+                            <a 
+                                href="https://mail.google.com/mail/?view=cm&to=paulargiepurisima@gmail.com"  
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-slate-100 underline font-medium hover:bg-slate-50 hover:text-blue-600 break-all"
+                            >
                                 paulargiepurisima@gmail.com
                             </a>
                             <span className="absolute top-0 text-2xl md:text-3xl text-red-700"><CgMail /></span>
@@ -640,6 +657,7 @@ export default function Portfolio() {
                             </div>
                             <div className="mt-5">
                                 <button
+                                    onClick={openViewProjectModal}
                                     className="flex items-center justify-center w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition text-sm md:text-base"
                                 >
                                     Send Message
