@@ -385,7 +385,7 @@ export default function Portfolio() {
                             <button 
                                 style={myProjectBtnFadeIn.style}
                                 onClick={openViewProjectModal}
-                                className="w-full sm:w-48 py-2 px-9 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium"
+                                className="w-full sm:w-48 py-2 px-4 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium"
                             >
                                 View All Projects
                             </button>
