@@ -25,9 +25,22 @@ import { useTypewriter,
     useBreatheOnce
 } from "../../hooks/useAnimationEffects";
 import { ViewProjectModal } from "@/components/Modal/ViewProjectModal";
+import { useEffect, useState } from "react";
 
 
 export default function Portfolio() {
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+        };
+
+        handleResize(); // run on load
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const { isOpen: isViewOpen, item: selectedItem, openViewModal, closeModal: closeViewModal } = useUserModal();
     const { isOpen: isProjOpen, item: selectedProj, openViewProjectModal, closeModal: closeProjModal } = useViewProjectModal();
@@ -350,7 +363,9 @@ export default function Portfolio() {
 
                        
                     </div>
-                    <div className="fixed bottom-5 right-5 z-50 bg-slate-500 text-white text-lg font-bold flex items-center px-3 py-1 rounded-md shadow-lg">
+                    <div className={`fixed bottom-5 right-5 z-50 bg-slate-500 text-white text-lg font-bold flex items-center px-3 py-1 rounded-md shadow-lg
+                        ${isMobile ? "hidden" : ""}
+                    `}>
                         <p className="mr-2">DP</p>
                         <span className="text-blue-300 text-4xl"><FaDev /></span>
                     </div>
@@ -365,15 +380,28 @@ export default function Portfolio() {
                     <p ref={projectRef} style={projectFadeIn.style} className=" text-slate-100 text-base md:text-lg mb-4 text-center lg:text-left">
                         Here are some of the projects I've built using React, Laravel, and other web technologies. These projects showcase my skills in full-stack development.
                     </p>
-                   
-                    <div ref={myProjectBtnRef} className="flex justify-center lg:justify-start">
-                        <button 
-                            style={myProjectBtnFadeIn.style}
-                            onClick={openViewProjectModal}
-                            className="text-center px-4 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition"
-                        >
-                            View All Projects
-                        </button>
+                    <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 w-full sm:w-auto">
+                        <div ref={myProjectBtnRef} className="flex-1 sm:flex-none">
+                            <button 
+                                style={myProjectBtnFadeIn.style}
+                                onClick={openViewProjectModal}
+                                className="w-full sm:w-48 py-2 px-9 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium"
+                            >
+                                View All Projects
+                            </button>
+                        </div>
+                        
+                        <div ref={myProjectBtnRef} className="flex-1 sm:flex-none">
+                            <a
+                                style={myProjectBtnFadeIn.style}
+                                href="https://github.com/DpDev12/GeoMock"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full sm:w-48 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium inline-block"
+                            >
+                                Capstone Source Code
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -414,7 +442,7 @@ export default function Portfolio() {
                                 technologies: ["React.js", "Laravel", "JavaScript", "HTML/CSS", "MySQL", "Git/GitHub"],
                                 experience: "2+ years of web development experience"
                             })}
-                            className="bg-white text-indigo-800 px-4 py-2 rounded hover:bg-gray-200 transition cursor-pointer">
+                            className=" w-full sm:w-48  bg-white text-indigo-800 px-4 py-2 rounded hover:bg-gray-200 transition cursor-pointer">
                             View More
                         </button>
                     </div>
