@@ -276,7 +276,7 @@ export default function Portfolio() {
       // Method 1: Direct download from public folder
     const handleDownloadResume = () => {
       const link = document.createElement('a');
-      link.href = '/PAUL_ARGIE_PURISIMA-RESUME-Updated.pdf'; // Place your PDF in public/resume.pdf
+      link.href = '/PAUL_ARGIE_PURISIMA-UPDATED-RESUME.pdf'; // Place your PDF in public/resume.pdf
       link.download = 'Paul_Argie_Purisima-Resume.pdf';
       link.click();
     };

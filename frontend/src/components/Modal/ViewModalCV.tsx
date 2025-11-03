@@ -20,13 +20,13 @@ export const ViewModalCV = <T,>({
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/PAUL_ARGIE_PURISIMA-RESUME-Updated.pdf';
+    link.href = '/PAUL_ARGIE_PURISIMA-UPDATED-RESUME.pdf';
     link.download = 'Paul_Argie_Purisima_Resume.pdf';
     link.click();
   };
 
   const handleViewFullPDF = () => {
-    window.open('/PAUL_ARGIE_PURISIMA-RESUME-Updated.pdf', '_blank');
+    window.open('/PAUL_ARGIE_PURISIMA-UPDATED-RESUME.pdf', '_blank');
   };
 
   const handlePdfError = () => {
