@@ -463,7 +463,7 @@ export default function Portfolio() {
                         </div>
                         
                         {/* Scrollable Content with Custom Scrollbar */}
-                        <div className="flex-1 overflow-y-auto px-7 pb-6 custom-scrollbar">
+                        <div className="flex-1 overflow-y-auto px-7 pb-6">
                             <div className="space-y-10 pt-2">
                                 {/* Technical Skills */}
                                 <div>

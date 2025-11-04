@@ -1,97 +1,55 @@
-/* Method 1: Webkit Scrollbar (Chrome, Safari, Edge) */
-/* Add this to your main.css or global CSS file */
-
-/* Thin scrollbar */
-.thin-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.thin-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.thin-scrollbar::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 10px;
-}
-
-.thin-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Extra thin scrollbar */
-.extra-thin-scrollbar::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-.extra-thin-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.extra-thin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-}
-
-.extra-thin-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-
-/* Styled scrollbar with colors */
-.styled-scrollbar::-webkit-scrollbar {
+/* Light mode scrollbar */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   width: 8px;
 }
 
-.styled-scrollbar::-webkit-scrollbar-track {
-  background: #e2e8f0;
-  border-radius: 4px;
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
 }
 
-.styled-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1, #4f46e5);
-  border-radius: 4px;
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+  border-radius: 10px;
+  border: 2px solid #f1f5f9;
 }
 
-.styled-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4f46e5, #4338ca);
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4f46e5 0%, #3730a3 100%);
 }
 
-/* Hidden scrollbar but still scrollable */
-.hidden-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+/* Dark mode scrollbar */
+html.dark::-webkit-scrollbar-track,
+body.dark::-webkit-scrollbar-track {
+  background: #e9733c; /* slate-800 */
 }
 
-.hidden-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+html.dark::-webkit-scrollbar-thumb,
+body.dark::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e9733c 0%, #fb923c 100%);
+  border: 2px solid #1e293b;
 }
 
-/* Global application of thin scrollbar */
+html.dark::-webkit-scrollbar-thumb:hover,
+body.dark::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fb923c 0%, #f97316 100%);
+}
+
+/* Firefox support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #84addf #f1f5f9;
-  /* scrollbar-color: #cbd5e1 #f1f5f9; */
+  scrollbar-color: #6366f1 #f1f5f9;
 }
 
-*::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  border-radius: 20px;
+html.dark,
+body.dark {
+  scrollbar-color: #e9733c #1e293b; /* Thumb, Track */
 }
 
-*::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 3px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.dark * {
+  scrollbar-color: #e9733c #1e293b;
 }
