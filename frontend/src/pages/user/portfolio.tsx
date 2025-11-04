@@ -1,13 +1,13 @@
 import "../../assets/css/main.css";
 import "../../assets/css/scrollbar.css";
 import Paul from "../../assets/image/paul.jpg";
-import { FaArrowDown, FaDev, FaDiscord, FaFacebookSquare, FaGithub, FaHtml5, FaJava, FaLightbulb, FaLinkedin, FaPaintBrush, FaReact} from "react-icons/fa";
+import { FaArrowDown, FaDev, FaDiscord, FaFacebookSquare, FaGithub, FaHtml5, FaJava, FaLightbulb, FaLinkedin, FaMobile, FaPaintBrush, FaReact} from "react-icons/fa";
 import { IoGitBranch } from "react-icons/io5";
 import { SiPhp } from "react-icons/si";
 import { HiDatabase } from "react-icons/hi";
 import { IoIosTime } from "react-icons/io";
 import { RiTeamFill } from "react-icons/ri";
-import { FaArrowsRotate, FaRegMessage } from "react-icons/fa6";
+import { FaArrowsRotate, FaG, FaRegMessage } from "react-icons/fa6";
 import { CgMail } from "react-icons/cg";
 import Nav from "./components/nav";
 import { FcOpenedFolder } from "react-icons/fc";
@@ -699,6 +699,44 @@ export default function Portfolio() {
                     </div>
                 </div>
             </div>
+
+            {/* <div className="min-h-screen grid grid-cols-1 lg:grid-cols-4 gap-0 dark:bg-slate-700">
+                <p>copyright@DPDEV</p>
+            </div> */}
+          
+            <footer className="w-full bg-slate-300 dark:bg-slate-700 py-4 px-10">
+                <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-2">
+                    <p className="text-slate-700 dark:text-slate-300 text-sm">
+                    © 2025 <span className="font-semibold">DPDEV</span>. All rights reserved.
+                    </p>
+
+                    <p className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                    <span className="flex items-center gap-1">
+                        <FaMobile className="text-indigo-500 dark:text-orange-400" />
+                        <a href="tel:09517369044" className="hover:underline">
+                        0951-736-9044
+                        </a>
+                    </span>
+
+                    <span className="hidden md:inline">|</span>
+
+                    <span className="flex items-center gap-1">
+                        <CgMail className="text-indigo-500 dark:text-orange-400" />
+                        <a 
+                            href="https://mail.google.com/mail/?view=cm&to=paulargiepurisima@gmail.com"  
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        className="hover:underline">
+                        paulargiepurisima@gmail.com
+                        </a>
+                    </span>
+                    </p>
+                </div>
+            </footer>
+
+
+
+
 
             <ViewModalCV
                 item={selectedItem} 
