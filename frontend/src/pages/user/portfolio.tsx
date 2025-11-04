@@ -26,6 +26,7 @@ import { useTypewriter,
 } from "../../hooks/useAnimationEffects";
 import { ViewProjectModal } from "@/components/Modal/ViewProjectModal";
 import { useEffect, useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 
 export default function Portfolio() {
@@ -283,11 +284,14 @@ export default function Portfolio() {
 
     return (
       
-        <div className="px-4 md:px-10 bg-slate-300">
+        <div className="px-4 md:px-10 bg-slate-300 dark:bg-slate-700">
             {/* HOME SECTION */}
+            <div className="fixed flex bottom-14 right-5 p-4 justify-end z-50">
+                <ThemeToggle/>
+            </div>
             <div id="home" className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Left Column - Profile */}
-                <div className="relative bg-indigo-900 text-white p-6 md:p-10 clip-left-slope flex flex-col justify-between order-2 lg:order-1">
+                <div className="relati bg-indigo-900 dark:bg-slate-900 text-white p-6 md:p-10 clip-left-slope flex flex-col justify-between order-2 lg:order-1">
                     <div className="mt-0 flex justify-center lg:justify-start">
                         <img src={Paul} alt="Profile" className="w-60 h-32 md:w-80 md:h-40 object-cover rounded-full border-4 border-white"/>
                     </div>
@@ -295,7 +299,7 @@ export default function Portfolio() {
                     <div className="text-center lg:text-left overflow-hidden">
                         <h1 style={drophello.style} className="text-2xl md:text-4xl font-bold mb-2">
                             Hello, 
-                            <span className="text-yellow-400 ml-2">
+                            <span className="text-yellow-400 dark:text-orange-500 ml-2">
                                 I am
                             </span>
                         </h1>
@@ -303,7 +307,7 @@ export default function Portfolio() {
                         <h1 style={dropName.style} className="text-4xl md:text-6xl font-bold animate">Paul Argie</h1>
                         <h1 style={dropLName.style} className="text-4xl md:text-6xl font-bold">Purisima</h1>
                         <div  className="min-h-[3rem] flex items-center justify-center lg:justify-start">
-                            <h5 className="text-xl md:text-2xl font-bold text-yellow-400">
+                            <h5 className="text-xl md:text-2xl font-bold text-yellow-400 dark:text-orange-500">
                                 {animatedTitle}
                                 <span className="animate-pulse text-white ml-1">|</span>
                             </h5>
@@ -329,15 +333,15 @@ export default function Portfolio() {
                         </header>
 
                         <div ref={letConnectRef} style={letConnectFadeIn.style} className="mb-0 text-slate-800 text-center lg:text-left">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-2">Let's Connect!</h2>
-                            <p>I'm excited to collaborate or discuss opportunities. Get my CV below and reach out!</p>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-2 dark:text-gray-100">Let's Connect!</h2>
+                            <p className=" dark:text-gray-400">I'm excited to collaborate or discuss opportunities. Get my CV below and reach out!</p>
                         </div>
                         
                         <div ref={homeBtnRef} className="mt-4 flex justify-center lg:justify-start">
                             <button 
                                 style={homeBtnFadeIn.style} 
                                 onClick={handleDownloadResume}
-                                className="group mt-0 bg-white text-blue-800 px-4 py-2 rounded-md flex items-center hover:bg-gray-200 transition cursor-pointer">
+                                className="group mt-0 bg-white text-blue-800 dark:bg-orange-500 dark:text-white px-4 py-2 rounded-md flex items-center hover:bg-gray-200 transition cursor-pointer">
                                 Download my CV <span className='mt-1 ml-1 group-hover:animate-bounce'><FaArrowDown /></span>
                             </button>
                         </div>
@@ -345,12 +349,12 @@ export default function Portfolio() {
 
                     {/* Bottom Half - About Me */}
                     <div ref={aboutRef} style={aboutFadeIn.style} className="p-6 md:p-10 text-slate-800">
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center lg:text-left">About Me?</h2>
-                        <p className="text-justify leading-relaxed mb-3">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center lg:text-left dark:text-gray-100">About Me?</h2>
+                        <p className="text-justify leading-relaxed mb-3 dark:text-gray-400">
                             I'm Paul Argie Purisima, a web developer passionate about creating meaningful digital solutions.
                         </p>
                         <div className="text-left">
-                            <ul className="text-sm text-slate-700 space-y-1">
+                            <ul className="text-sm text-slate-700 dark:text-gray-400 space-y-1">
                                 <li>✓ Expert in React, Laravel, and modern web technologies</li>
                                 {/* <li>✓ 2+ years of hands-on web development experience</li> */}
                                 <li>✓ Delivered multiple successful web applications</li>
@@ -375,9 +379,9 @@ export default function Portfolio() {
             {/* PROJECTS SECTION */}
             <div id="project" className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Left Column - Project Title & Description */}
-                <div className="bg-indigo-900 text-white p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
-                    <h1 ref={myProjectRef} style={myProjectFadeIn.style} className="text-3xl md:text-4xl font-bold text-slate-100 mb-4 text-center lg:text-left">My Projects</h1>
-                    <p ref={projectRef} style={projectFadeIn.style} className=" text-slate-100 text-base md:text-lg mb-4 text-center lg:text-left">
+                <div className="bg-indigo-900 text-white dark:bg-slate-900 p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
+                    <h1 ref={myProjectRef} style={myProjectFadeIn.style} className="text-3xl md:text-4xl font-bold text-slate-100 dark:text-orange-400 mb-4 text-center lg:text-left">My Projects</h1>
+                    <p ref={projectRef} style={projectFadeIn.style} className=" text-slate-100 dark:text-gray-400 text-base md:text-lg mb-4 text-center lg:text-left">
                         Here are some of the projects I've built using React, Laravel, and other web technologies. These projects showcase my skills in full-stack development.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 w-full sm:w-auto">
@@ -385,7 +389,7 @@ export default function Portfolio() {
                             <button 
                                 style={myProjectBtnFadeIn.style}
                                 onClick={openViewProjectModal}
-                                className="w-full sm:w-48 py-2 px-4 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium"
+                                className="w-full sm:w-48 py-2 px-4 bg-white dark:bg-orange-500 text-indigo-800 dark:text-white rounded hover:bg-gray-200 transition text-center font-medium"
                             >
                                 View All Projects
                             </button>
@@ -397,7 +401,7 @@ export default function Portfolio() {
                                 href="https://github.com/DpDev12/GeoMock"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full sm:w-48 py-2 bg-white text-indigo-800 rounded hover:bg-gray-200 transition text-center font-medium inline-block"
+                                className="w-full sm:w-48 py-2 bg-white dark:bg-orange-500 text-indigo-800 dark:text-white rounded hover:bg-gray-200 transition text-center font-medium inline-block"
                             >
                                 Capstone Source Code
                             </a>
@@ -407,22 +411,22 @@ export default function Portfolio() {
 
                 {/* Right Column - Sliding Project Cards */}
                 <div className="p-6 md:p-10 flex items-center justify-center order-1 lg:order-2">
-                    <div ref={projRef} style={proj.style} className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
+                    <div ref={projRef} style={proj.style} className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-8 w-full max-w-md text-center">
                         <FcOpenedFolder size={64} className="mx-auto mb-4" />
-                        <h2 className="text-xl md:text-2xl font-bold text-indigo-800 mb-2">No Projects Yet</h2>
-                        <p className="text-gray-600">
+                        <h2 className="text-xl md:text-2xl font-bold text-indigo-800 dark:text-gray-100 mb-2">No Projects Yet</h2>
+                        <p className="text-gray-600 dark:text-gray-400">
                             Projects will be showcased here soon!
                         </p>
                     </div>
                 </div>
             </div>
-            
+                 
             {/* SKILLS SECTION */}
             <div id="skill" className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {/* Left Column - Expertise */}
-                <div className="bg-indigo-900 text-white p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
-                    <h1 ref={expertiseRef} style={expertiseFadeIn.style} className="text-3xl md:text-4xl font-bold text-slate-100 mb-4 text-center lg:text-left">My Expertise</h1>
-                    <p ref={skillsOutRef} style={skillsOutFadeIn.style} className="text-base md:text-lg text-justify mb-6">
+                <div className="dark:bg-slate-900 bg-indigo-900 text-white p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
+                    <h1 ref={expertiseRef} style={expertiseFadeIn.style} className="dark:text-orange-400 text-3xl md:text-4xl font-bold text-slate-100 dark: mb-4 text-center lg:text-left">My Expertise</h1>
+                    <p ref={skillsOutRef} style={skillsOutFadeIn.style} className="dark:text-gray-400 text-base md:text-lg text-justify mb-6">
                         As a dedicated web developer, I specialize in creating modern, responsive applications using React, Laravel, and cutting-edge web technologies.
                     </p>
                     
@@ -442,7 +446,7 @@ export default function Portfolio() {
                                 technologies: ["React.js", "Laravel", "JavaScript", "HTML/CSS", "MySQL", "Git/GitHub"],
                                 experience: "2+ years of web development experience"
                             })}
-                            className=" w-full sm:w-48  bg-white text-indigo-800 px-4 py-2 rounded hover:bg-gray-200 transition cursor-pointer">
+                            className="dark:bg-orange-500 dark:text-white w-full sm:w-48  bg-white text-indigo-800 px-4 py-2 rounded hover:bg-gray-200 transition cursor-pointer">
                             View More
                         </button>
                     </div>
@@ -450,10 +454,10 @@ export default function Portfolio() {
 
                 {/* Right Column - Skills */}
                 <div ref={skillsRef} style={skillsFadeIn.style} className="p-6 md:p-10 order-1 lg:order-2 flex justify-center items-center">
-                    <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
+                    <div className="dark:bg-slate-800 bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
                         {/* Sticky Header */}
-                        <div className="sticky top-0 bg-amber-50 z-10 rounded-t-3xl">
-                            <h2 className="text-2xl md:text-3xl font-bold text-indigo-900 p-6 text-center lg:text-left">
+                        <div className="dark:bg-slate-800 sticky top-0 bg-amber-50 z-10 rounded-t-3xl">
+                            <h2 className="dark:text-gray-100 text-2xl md:text-3xl font-bold text-indigo-900 p-6 text-center lg:text-left">
                                 Skills
                             </h2>
                         </div>
@@ -463,7 +467,7 @@ export default function Portfolio() {
                             <div className="space-y-10 pt-2">
                                 {/* Technical Skills */}
                                 <div>
-                                    <h3 className="text-lg md:text-xl font-semibold text-slate-700 mb-4">
+                                    <h3 className="dark:text-gray-400 text-lg md:text-xl font-semibold text-slate-700 mb-4">
                                         Technical Skills
                                     </h3>
                                     <div className="space-y-4">
@@ -476,8 +480,8 @@ export default function Portfolio() {
                                             { icon: <HiDatabase />, label: "MySQL", value: 45, color: "bg-green-600" },
                                         ].map((item, idx) => (
                                             <div key={idx} className="skill-item">
-                                                <div className="flex items-center text-slate-800 mb-2">
-                                                    <span className="text-xl md:text-2xl mr-3 text-indigo-600">
+                                                <div className="dark:text-gray-400 flex items-center text-slate-800 mb-2">
+                                                    <span className="dark:text-orange-400 text-xl md:text-2xl mr-3 text-indigo-600">
                                                         {item.icon}
                                                     </span>
                                                     <span className="font-semibold text-sm md:text-base">
@@ -501,7 +505,7 @@ export default function Portfolio() {
 
                                 {/* Soft Skills */}
                                 <div>
-                                    <h3 className="text-lg md:text-xl font-semibold text-slate-700 mb-4">
+                                    <h3 className="dark:text-gray-400 text-lg md:text-xl font-semibold text-slate-700 mb-4">
                                         Soft Skills
                                     </h3>
                                     <div className="space-y-4">
@@ -512,9 +516,9 @@ export default function Portfolio() {
                                             { icon: <FaPaintBrush />, label: "Creativity", value: 85, color: "bg-yellow-500" },
                                             { icon: <FaArrowsRotate />, label: "Adaptability", value: 90, color: "bg-pink-500" },
                                         ].map((item, idx) => (
-                                            <div key={idx} className="skill-items">
-                                                <div className="flex items-center text-slate-800 mb-2">
-                                                    <span className="text-xl md:text-2xl mr-3 text-indigo-600">
+                                            <div key={idx} className="skill-item">
+                                                <div className="dark:text-gray-400 flex items-center text-slate-800 mb-2">
+                                                    <span className="dark:text-orange-400 text-xl md:text-2xl mr-3 text-indigo-600">
                                                         {item.icon}
                                                     </span>
                                                     <span className="font-semibold text-sm md:text-base">
@@ -543,14 +547,14 @@ export default function Portfolio() {
            
             {/* TESTIMONIALS SECTION */}
             <div ref={sectionRef} id="testimonial" className="min-h-screen px-4 md:px-10 pt-10 md:pt-20">
-                 <h1 className="text-center text-2xl md:text-3xl font-bold text-slate-700 mb-6">
+                 <h1 className="dark:text-gray-100 text-center text-2xl md:text-3xl font-bold text-slate-700 mb-6">
                     Client Testimonials
                 </h1>
                 <div ref={testRef} style={test.style} className="flex items-center justify-center mt-20">
-                    <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
-                        <FaRegMessage size={64} className="mx-auto mb-4 text-yellow-700" />
-                        <h2 className="text-xl md:text-2xl font-bold text-indigo-800 mb-2">No Testimonial Yet</h2>
-                        <p className="text-gray-600">
+                    <div className="dark:bg-slate-800 bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
+                        <FaRegMessage size={64} className="dark:text-orange-400 mx-auto mb-4 text-yellow-700" />
+                        <h2 className="dark:text-gray-100 text-xl md:text-2xl font-bold text-indigo-800 mb-2">No Testimonial Yet</h2>
+                        <p className="dark:text-gray-400 text-gray-600">
                             Testimonial will be showcased here soon!
                         </p>
                     </div>
@@ -560,21 +564,21 @@ export default function Portfolio() {
             {/* CONTACT SECTION */}
             <div id="contact" className='min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-0'>
                 {/* Left Column - Contact Info */}
-                <div className="bg-indigo-900 p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
-                    <h2 ref={getintouchRef} style={getintouchFadeIn.style} className="text-3xl md:text-5xl font-semibold text-slate-100 mt-0 mb-8 text-center">Get In Touch!</h2>
-                    <p ref={conRef} style={conFadeIn.style} className="text-slate-100 mb-8 text-center">
+                <div className="dark:bg-slate-900 bg-indigo-900 p-6 md:p-10 lg:pl-10 lg:pr-32 flex flex-col justify-center clip-left-slope order-2 lg:order-1">
+                    <h2 ref={getintouchRef} style={getintouchFadeIn.style} className="dark:text-orange-400 text-3xl md:text-5xl font-semibold text-slate-100 mt-0 mb-8 text-center">Get In Touch!</h2>
+                    <p ref={conRef} style={conFadeIn.style} className="dark:text-gray-400 text-slate-100 mb-8 text-center">
                         Have a question or want to work together? Feel free to reach out!
                     </p>
 
                     {/* <div  ref={conGRef} style={conGFadeIn.style} className="mb-16 text-center"> */}
                     <div  ref={contactSocialRef} style={conGFadeIn.style} className="mb-16 text-center">
-                        <p className="text-slate-100">You can also email me directly at:</p>
+                        <p className="dark:text-gray-400 text-slate-100">You can also email me directly at:</p>
                         <div className="relative inline-block">
                             <a 
                                 href="https://mail.google.com/mail/?view=cm&to=paulargiepurisima@gmail.com"  
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="text-slate-100 underline font-medium hover:bg-slate-50 hover:text-blue-600 break-all"
+                                className="dark:text-gray-400 text-slate-100 underline font-medium hover:bg-slate-50 hover:text-blue-600 break-all"
                             >
                                 paulargiepurisima@gmail.com
                             </a>
@@ -640,12 +644,12 @@ export default function Portfolio() {
                 <div 
                     onClick={openViewProjectModal}
                     className="p-6 md:p-10 lg:p-20 flex flex-col justify-center order-1 lg:order-2">
-                    <div ref={conGRef} style={conGFadeIn.style} className="bg-white rounded-3xl p-6 md:p-10">
-                        <h1 className="text-slate-700 text-2xl md:text-3xl font-bold pb-5 text-center">Contact Me</h1>
+                    <div ref={conGRef} style={conGFadeIn.style} className="dark:bg-slate-800 bg-white rounded-3xl p-6 md:p-10">
+                        <h1 className="dark:text-gray-100 text-slate-700 text-2xl md:text-3xl font-bold pb-5 text-center">Contact Me</h1>
 
                         <form className="space-y-2 text-gray-900">
                             <div className="w-full">
-                                <label className="block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Name</label>
+                                <label className="dark:text-gray-400 block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Name</label>
                                 <input
                                     type="text"
                                     placeholder="Juan Dela Cruz"
@@ -654,7 +658,7 @@ export default function Portfolio() {
                                 /> 
                             </div>
                             <div>
-                                <label className="block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Email</label>
+                                <label className="dark:text-gray-400 block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Email</label>
                                 <input
                                     type="email"
                                     placeholder="your@gmail.com"
@@ -663,7 +667,7 @@ export default function Portfolio() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Project Type</label>
+                                <label className="dark:text-gray-400 block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Project Type</label>
                                 <select
                                     className="bg-slate-100 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm md:text-base"
                                     name="project"
@@ -676,7 +680,7 @@ export default function Portfolio() {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Message</label>
+                                <label className="dark:text-gray-400 block text-base md:text-lg font-medium text-gray-700 mb-1 text-left">Message</label>
                                 <textarea
                                     placeholder="Your message..."
                                     className="bg-slate-100 w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm md:text-base h-24 md:h-32"
@@ -686,7 +690,7 @@ export default function Portfolio() {
                             <div className="mt-5">
                                 <button
                                     onClick={openViewProjectModal}
-                                    className="flex items-center justify-center w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition text-sm md:text-base"
+                                    className="dark:bg-orange-500 dark:text-white flex items-center justify-center w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition text-sm md:text-base"
                                 >
                                     Send Message
                                 </button>

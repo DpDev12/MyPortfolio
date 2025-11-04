@@ -36,11 +36,11 @@ export default function Nav() {
     <>
       <nav
         className={`${
-          isSticky ? "fixed top-0 left-0 w-full z-50 shadow-md bg-white" : "relative"
+          isSticky ? "fixed top-0 left-0 w-full z-50 shadow-md bg-white dark:bg-slate-900 " : "relative"
         } transition-all duration-300 px-4 md:px-6 py-3`}
       >
         {/* Desktop Navigation */}
-        <div className="hidden md:flex justify-center gap-6 text-blue-500 font-semibold">
+        <div className="hidden md:flex justify-center gap-6 text-blue-500 dark:text-orange-500 font-bold">
           {navItems.map((item) => (
             <a 
               key={item.href}
@@ -54,13 +54,13 @@ export default function Nav() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center justify-between">
-          <div className="text-blue-700 font-bold text-xl">
+          <div className="text-blue-700 dark:text-orange-500 font-bold text-xl">
             DPDEV
           </div>
           
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="bg-transparent text-blue-700 p-2 rounded-md hover:bg-gray-100 transition z-50 relative"
+            className="bg-transparent text-blue-700 dark:text-orange-500 p-2 rounded-md hover:bg-none hover:outline-none transition z-50 relative"
           >
             {isMobileMenuOpen ? (
               <HiX className="w-6 h-6" />
@@ -77,7 +77,7 @@ export default function Nav() {
               isMobileMenuOpen 
                 ? "max-h-80 opacity-100" 
                 : "max-h-0 opacity-0"
-            } ${isSticky ? "absolute top-full left-0 w-full bg-white shadow-md" : ""}`}
+            } ${isSticky ? "absolute top-full left-0 w-full bg-white dark:bg-slate-900  shadow-md" : ""}`}
           >
             <div className="flex flex-col space-y-2 pt-4 pb-2">
               {navItems.map((item) => (
@@ -85,7 +85,8 @@ export default function Nav() {
                   key={item.href}
                   href={item.href}
                   onClick={handleNavClick}
-                  className="text-blue-700 font-semibold px-4 py-2 rounded-md hover:bg-gray-100 transition text-center relative z-50"
+                  // className="text-blue-700 font-semibold px-4 py-2 rounded-md text-left hover:bg-gray-100 hover:text-center transition relative z-50"
+                  className="text-blue-700 dark:text-orange-500 dark:hover:bg-black font-semibold px-4 py-2 rounded-md text-left hover:bg-gray-100 hover:text-center transition-all duration-700 ease-in-out"
                 >
                   {item.label}
                 </a>
